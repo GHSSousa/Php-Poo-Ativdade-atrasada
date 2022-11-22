@@ -1,0 +1,75 @@
+<?php
+    
+    */
+
+    class Invoice{ 
+
+        private $nif; // Número do item faturado
+        private $ddi; // Descrição do item
+        private $qci; // Quantidade comprada do item
+        private $pui; // Preço unitário do item
+
+      
+
+      
+
+        public function __construct($numeroF, $descricaoI, $quantidadeI, $precoU){
+            $this->nif = $numeroF;
+            $this->ddi = $descricaoI;
+            // $this->qci = $quantidadeI;
+            // $this->pui = $precoU;
+
+            if($quantidadeI <= 0){ 
+                $this->qci = 0; 
+            } else {
+                $this->qci = $quantidadeI;
+            }
+            
+            if($precoU <= 0){
+                $this->pui = 0.0;
+            } else {
+                $this->pui = $precoU;
+            }
+        }
+
+        
+
+       
+
+        public function __set($atributo, $value){
+            $this->$atributo = $value;
+        }
+
+       
+
+        
+       
+
+        public function __get($atributo){
+            return $this->$atributo;
+        }
+
+      
+
+       
+
+      
+
+        public function getInvoiceAmount(){
+            $amount = $this->pui * $this->qci;
+            return $amount;
+        }
+
+      
+
+    }
+
+    $informatica = new Invoice(19, "Monitor", 20, 499.99);
+
+    echo "<strong> O número do item é: </strong>" . $informatica -> nif . "<br>";
+    echo "<strong> A descrição do item é: </strong>" . $informatica -> ddi . "<br>"; 
+    echo "<strong> A quantidade do item é: </strong>" . $informatica -> qci . "<br>";
+    echo "<strong> O preço unitário do item é: </strong>" . $informatica -> pui . "<br>";
+    echo "<strong> Total: </strong>" . $informatica -> getInvoiceAmount();
+
+?>

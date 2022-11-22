@@ -1,0 +1,75 @@
+<?php 
+
+   
+
+    class Planocartesiano{ 
+       
+        private $x; // Linha horizontal
+        private $y; // Linha vertical
+        private $raio; // Raio
+
+      
+
+        function __construct($raio, $x = 0, $y = 0){
+            $this->x = $x;
+            $this->y = $y;
+            $this->setRaio($raio);
+        }
+
+
+
+
+
+        public function setX($x){ 
+            $this->x = $x; 
+        }
+    
+        public function setY($x){ 
+            $this->y = $y; 
+        }
+    
+        public function setRaio($raio){ 
+            $this->raio = $raio < 0 ? 0 : $raio; 
+        }
+
+       
+        public function getX(){ 
+            return $this->x; 
+        }
+
+        public function getY(){ 
+            return $this->y; 
+        }
+
+        public function getRaio(){ 
+            return $this->raio; 
+        }
+
+      
+    
+        public function Inflar($value){ 
+            $this->setRaio($this->raio + $value); 
+        }
+    
+        public function Desinflar($value){ 
+            $this->setRaio($this->raio - $value); 
+        }
+
+    
+
+        public function Movimento($ponto){
+            $this->x = $ponto->getX();
+            $this->y = $ponto->getY();
+        }
+
+   
+
+        // Método calcular a área - Início
+        
+         public function Area(){ 
+            return pi() * ($this->raio * 2); 
+        }
+
+        }
+
+?>
